@@ -96,6 +96,22 @@ exports.getUserBookings = async (req, res) => {
     }
 };
 
+exports.getMyBookings = async (req, res) => {
+    try {
+        const bookings = await Booking.find({customer: req.user._id});
+        res.status(200).json({
+            status: "success",
+            results: bookings.length,
+            bookings
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: error.message
+        });
+    }
+};
+
 exports.getProviderBookings = async (req, res) => {
     try {
         const bookings = await Booking.find({provider: req.params.providerId});
