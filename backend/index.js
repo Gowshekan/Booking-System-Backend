@@ -7,7 +7,7 @@ const providerRoutes = require("./Routes/providerRoutes");
 const app = express();
 const cors = require("cors");
 
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: ["https://booking-system-backend-1-vmn5.onrender.com"] }));
 app.use(express.json());
 
 // Routes

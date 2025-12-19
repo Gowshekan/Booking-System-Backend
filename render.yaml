@@ -1,0 +1,20 @@
+# render.yaml
+# This file configures your application for deployment on Render.
+# It tells Render that your Node.js application is located in the 'backend' directory.
+
+services:
+  - type: web
+    name: booking-system-backend
+    env: node
+    # The root directory for your service, relative to the repository root.
+    rootDir: ./backend
+    # The command to install dependencies.
+    buildCommand: "npm install"
+    # The command to start your service.
+    startCommand: "node server.js"
+    # Specify the Node.js version based on your logs.
+    envVars:
+      - key: NODE_VERSION
+        value: "22.16.0"
+      # IMPORTANT: Add your other environment variables like PORT_NO, 
+      # JWT_SECRETKEY, and DATABASE_URL in the Render dashboard under Environment.
