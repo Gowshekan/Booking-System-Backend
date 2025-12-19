@@ -7,7 +7,13 @@ const providerRoutes = require("./Routes/providerRoutes");
 const app = express();
 const cors = require("cors");
 
-app.use(cors({ origin: ["https://booking-system-frontend-gamma.vercel.app/"] }));
+app.use(cors({ 
+    origin: [
+        "https://booking-system-frontend-gamma.vercel.app",
+        "http://localhost:3000"
+    ],
+    credentials: true
+}));
 app.use(express.json());
 
 // Routes
