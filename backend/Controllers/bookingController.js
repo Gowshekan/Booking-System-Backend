@@ -39,9 +39,16 @@ exports.getBooking = async (req, res) => {
 
 exports.createBooking = async (req, res) => {
     try {
-        console.log('Creating booking with data:', req.body);
+        const { service, customer, provider, date, time, address, totalAmount } = req.body;
+        
+        if (!service || !customer || !provider || !date || !time || !address || !totalAmount) {
+            return res.status(400).json({
+                status: "fail",
+                message: "Missing required fields"
+            });
+        }
+        
         const newBooking = await Booking.create(req.body);
-        console.log('Booking created successfully:', newBooking);
         
         res.status(201).json({
             status: "success",
