@@ -12,7 +12,7 @@ console.log("Starting server on port:", process.env.PORT_NO);
 // Connect to database with timeout handling
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb://localhost:27017/booking-system");
+        await mongoose.connect(process.env.DB_URL);
         console.log("✅ Database connected successfully to local MongoDB");
     } catch (err) {
         console.log("❌ Database connection failed:", err.message);
