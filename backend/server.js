@@ -9,14 +9,14 @@ mongoose.set('bufferCommands', false);
 
 console.log("Starting server on port:", process.env.PORT_NO);
 
-// Connect to database with timeout handling
+// Connect to MongoDB Atlas
 const connectDB = async () => {
     try {
         await mongoose.connect(process.env.DB_URL);
-        console.log("✅ Database connected successfully to local MongoDB");
+        console.log("✅ Database connected successfully to MongoDB Atlas");
     } catch (err) {
         console.log("❌ Database connection failed:", err.message);
-        console.log("📝 Note: App will use fallback mode for authentication");
+        process.exit(1);
     }
 };
 
